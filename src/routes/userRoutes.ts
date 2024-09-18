@@ -1,9 +1,10 @@
-import { Router, Request, Response } from "express";
+import { Router } from "express";
+import userController from "../controllers/usersControllers";
+const uscont = new userController();
 
 const router: Router = Router();
 
-router.get("/users", (req: Request, res: Response) => {
-  res.send("Получай всех юзеров");
-});
+router.get("/", uscont.listUsers);
+router.get("/:id", uscont.getUser);
 
 export default router;
